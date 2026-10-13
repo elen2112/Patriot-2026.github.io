@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="be">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жанчыны, якія змянілі гісторыю</title>
+    <style>
+        /* Анімацыя з'яўлення */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 40px 20px;
+            /* Фон у стылі старога паперу або пергаменту */
+            background: #fdfaf2 url('1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Times New Roman", Georgia, serif;
+            color: #2c1e12;
+            gap: 40px; /* Адлегласць паміж асноўным блокам і падвалам */
+        }
+
+        .text-box {
+            padding: 60px 80px;
+            max-width: 1050px;
+            width: 100%;
+            background: rgba(253, 250, 242, 0.96); /* Цёплы заценены белы */
+            border: 6px double #8b5e3c;
+            border-radius: 2px;
+            box-shadow: 0 25px 50px rgba(44, 30, 18, 0.2);
+            text-align: center;
+            /* Падключэнне анімацыі */
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .text-box h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #8b5e3c; /* Глыбокі бронзава-карычневы */
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase; /* Класічны манументальны стыль */
+        }
+
+        .text-box h2 {
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            color: #4a3319;
+            margin-bottom: 45px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Вінтажны стыль кнопак */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 280px;
+            flex: 1 1 280px;
+            max-width: 350px;
+            padding: 18px 30px;
+            /* Цёмны высакародны колер з выразным мінулым */
+            background: #3d2516;
+            color: #fdfaf2;
+            text-decoration: none;
+            /* Падвойная структура: знешняя мяжа і ўнутраная рамка */
+            border: 1px solid #25140b;
+            outline: 1px solid rgba(253, 250, 242, 0.3);
+            outline-offset: -6px; /* Заносіць рамку ўнутр кнопкі */
+            font-family: "Times New Roman", Georgia, serif;
+            font-size: 24px;
+            font-style: italic; /* Курсіў для элегантнасці */
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Эфекты пры навядзенні ў гістарычным стылі */
+        .btn:hover, .btn:focus {
+            background: #70201f; /* Класічны бардовы / каралеўскі пурпур */
+            color: #ffffff;
+            outline: 1px solid rgba(255, 255, 255, 0.6);
+            outline-offset: -6px;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(112, 32, 31, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* КРАСІВАЯ РАМКА ДЛЯ ПАДВАЛА (АЎТАРА) */
+        .media-section {
+            max-width: 1050px;
+            width: 100%;
+            background: rgba(253, 250, 242, 0.93);
+            border: 4px double #8b5e3c;
+            position: relative;
+            padding: 25px 40px;
+            box-shadow: 0 15px 35px rgba(44, 30, 18, 0.15);
+            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Дэкаратыўныя куткі для рамкі */
+        .media-section::before, .media-section::after {
+            content: "✦";
+            position: absolute;
+            color: #8b5e3c;
+            font-size: 14px;
+        }
+        .media-section::before { top: 5px; left: 10px; }
+        .media-section::after { bottom: 5px; right: 10px; }
+
+        .media-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .media-section li:first-child {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #3d2516;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(139, 94, 60, 0.3);
+            padding-bottom: 5px;
+            width: fit-content;
+        }
+
+        .media-section li:last-child {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #5c4028;
+            max-width: 800px;
+            line-height: 1.4;
+        }
+
+        /* Адаптыўнасць */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+                gap: 25px;
+            }
+
+            .text-box {
+                padding: 45px 25px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 100%;
+                padding: 15px 20px;
+            }
+
+            .media-section {
+                padding: 20px 15px;
+            }
+            
+            .media-section li:first-child {
+                font-size: 1.2rem;
+            }
+            
+            .media-section li:last-child {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="text-box">
+        <h1>Не слабая палавіна: жанчыны, якія ўславілі Беларусь</h1>
+        <h2>
+            <div class="quote">
+                Гісторыя Беларусі саткана з мужнасці, таленту і мудрасці яе дачок. Яны лячылі целы, складалі вершы і змагаліся за свабоду, пакінуўшы незгасальны след у нашай памяці
+            </div>
+        </h2>
+        
+        <nav class="buttons-container">
+            <a href="Конкурс Зеленок Софья.html" class="btn">Соф'я Шах</a>
+            <a href="жанчына 2.html" class="btn">Рэгіна Саламея</a>
+            <a href="ггг.html" class="btn">Марыя Ямант</a>
+        </nav>
+    </main>
+
+    <!-- Абноўлены падвал у прыгожай шляхецкай рамцы -->
+    <footer class="media-section">
+        <ul>
+            <li>Зелянок Аляксандр</li>
+            <li>Вучань 8 "Б" класа ДУА "Сярэдняя школа № 12 г. Светлагорска імя І.Р. Катлярова"</li>
+        </ul>
+    </footer>
+
+</body>
+</html>
