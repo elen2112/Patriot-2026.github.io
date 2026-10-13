@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="be">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Соф'я Шах</title>
+    <style>
+	/* НАСТРОЙКА ФОНА ВСЕЙ СТРАНИЦЫ */
+        body {
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #fcf8f2; 
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Головный контейнер с портретом */
+        .vintage-container {
+            border: 10px double #8B5A2B; 
+            padding: 15px; 
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); 
+            background-color: #fcf8f2; 
+            border-radius: 4px; 
+            max-width: 450px; 
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /* Общие стили для картинок на странице */
+        .vintage-frame {
+            max-width: 100%; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        .photo-name {
+            margin-top: 15px; 
+            font-family: Georgia, serif; 
+            color: #4a3525; 
+        }
+        
+        .photo-name h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* ТЕМАТИЧЕСКИЙ ФОН ПОД СВЕТЛЫЙ ПЕРГАМЕНТ */
+        .content-box {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 40px;
+            /* Эффект благородного светлого пергамента */
+            background-color: rgba(253, 251, 247, 0.97); 
+            backdrop-filter: blur(5px);
+            border: 2px solid #8B5A2B; /* Аккуратный ободок в цвет рамки */
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(139, 90, 43, 0.15);
+            font-family: Georgia, serif;
+            color: #2c1a0c; /* Глубокий кофейный цвет текста для отличного контраста */
+            line-height: 1.8;
+        }
+
+        .content-box h1 {
+            color: #800000; /* Благородный бордовый для главного заголовка */
+            text-align: center;
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .content-box h2 {
+            color: #800000; /* Бордовый цвет для подзаголовков */
+            border-bottom: 1px solid rgba(139, 90, 43, 0.2);
+            padding-bottom: 8px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .content-box ul {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        .content-box li {
+            margin-bottom: 10px;
+            list-style-type: square;
+        }
+
+        .content-box p {
+            text-align: justify;
+            margin-bottom: 20px;
+            text-indent: 20px;
+        }
+
+        .content-box b, .content-box strong {
+            color: #5c3d24; /* Выделение жирного текста теплым коричневым тоном */
+        }
+
+        /* КРАСИВАЯ СТИЛИЗАЦИЯ НИЖНЕЙ НАДПИСИ */
+        .bottom-title {
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #3e2713; 
+            margin: 40px auto 20px auto;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+            padding: 0 15px;
+        }
+
+        /* КОМАНДЫ ДЛЯ ТЕМНО-КОРИЧНЕВОЙ ЗАКРУГЛЕННОЙ КНОПКИ */
+        .black-btn-box {
+            text-align: center;
+            margin: 0 auto 40px auto;
+        }
+
+        .simple-black-btn {
+            display: inline-block;
+            padding: 18px 60px;
+            background-color: #5c3d24; /* Уютный кофейный оттенок */
+            color: #ffffff; 
+            font-family: Arial, sans-serif; 
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none; 
+            border-radius: 50px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+
+        .simple-black-btn:hover {
+            background-color: #3e2713; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        /* СЕКЦИЯ ДЛЯ ССЫЛОК */
+        .media-section {
+            max-width: 950px;
+            margin: 20px auto 30px auto;
+            padding: 20px 40px;
+            background-color: rgba(253, 251, 247, 0.9);
+            border-radius: 12px;
+            border: 1px dashed #8B5A2B;
+            font-family: Georgia, serif;
+        }
+
+        .media-section h3 {
+            color: #800000;
+            margin-top: 0;
+        }
+
+        .source-link {
+            color: #8B5A2B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+            color: #5c3d24;
+        }
+        
+        .image-spacer {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* СТИЛИ ДЛЯ КНОПКИ ДОМОЙ СПРАВА */
+        .home-btn-container {
+            max-width: 950px;
+            margin: 0 auto 50px auto;
+            text-align: right; /* Смяшчае кнопку ўправа */
+            padding: 0 40px; /* Выраўноўвае па краі тэкставага блока */
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background-color: #dc3545; /* Чырвоны колер */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 18px; 
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .home-btn:hover {
+            background-color: #bd2130; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .home-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхний блок: Рамка с главным фото -->
+    <div class="vintage-container">
+        <img src="111.jpg" alt="Саламея Рэгіна Русецкая" class="vintage-frame">
+        <div class="photo-name"><h2>СОФ'Я ШАХ</h2></div>
+    </div>
+
+    <!-- Текстовый блок: Вся информация и вторая картинка на новом атмосферном фоне -->
+    <div class="content-box">
+     <center right>    <h1>СОФ'Я ШАХ</h1>
+     <center right>   <p><b> Член Саюза пісьменнікаў СССР з 1990 года
+		
+        Член Саюза пісьменнікаў Беларусі
+		
+       Член Гомельскага абласнога аддзялення Саюза пісьменнікаў Беларусі
+		
+       Пісьменнік года Гомельскай вобласці ў 2022 годзе па рэйтынгу Гомельскага абласнога аддзялення Саюза пісьменнікаў Беларусі</i>.</p>
+        
+        <h2>Біяграфія</h2>
+        <ul>
+         <center right>   <h2>	 Шах Соф'я Мікалаеўна нарадзілася ў 1947 годзе ў в. Лесец Даманавіцкага (цяпер уваходзіць у склад Калінкавіцкага) раёна ў сялянскай сям'і.
+  Скончыла Азарыцкую сярэднюю школу і Мазырскі педагагічны інстытут. 
+  У 1969-1980 гадах працавала выкладчыкам пачатковых класаў у сельскіх школах Гомельскай вобласці. 
+  Пасля заканчэння ў 1980 годзе Мінскага педагагічнага інстытута працавала лагапедам у школе-інтэрнаце г. Светлагорска.
+Вершы пісала са школьнага ўзросту, актыўнай літаратурнай дзейнасцю пачала займацца з 1983 года. 
+Член Саюза беларускіх пісьменнікаў, аўтар шматлікіх публікацый у беларускіх і замежных друкаваных выданнях.
+ Аўтар пятнаццаці паэтычных кніг (“I не пакiне спавяданне” (1989), “Пад высокай лагодай нябёс” (1995), “Прысвячэнне” (2001), “Азарычы” (2007) і інш.). Жыве і працуе ў г. Светлагорску.
+  Соф'я Шах - вядомы беларускі паэт, майстар санетаў (рэдкай з'явы ў беларускай паэзіі). Гэты жанр патрабуе вялізнага майстэрства.
+  Соф'я Шах не толькі цудоўна валодае ім, але і пераконвае нас у шматгучнасці свайго паэтычнага слова. Аўтару належаць вянкі санетаў і 
+  вянкі вянкоў санетаў, сярод якіх ёсць і адрасаваныя дзецям. «Паэзія С. Шах – выразна адметная з'ява ў нацыянальным прыгожым пісьменстве,
+  яна вылучаецца не толькі на агульным фоне класічна традыцыйнай жаночай паззіі, але і ўсёй беларускай літаратуры сваёй выразна падкрэсленай 
+  душэўнасцю і духоўнасцю», – так піша ў зборніку навукова-папулярных артыкулаў «Дняпроўскія Фёдаравіч Штэйнер. Вершы Соф'і Шах – гэта філасофскія роздумы пра
+  жыццё, пра сённяшні дзень, пра блізкіх людзей. Яны прасякнуты святлом любові да жыцця, да роднага краю.
+        <br>
+        <!-- Вторая закругленная картинка внутри блока -->
+        <img src="34110.jpg" alt="Малюнак" class="vintage-frame">
+    </div>
+	 
+    <!-- Красиво упакованная нижняя надпись -->
+    <h1 class="bottom-title">КАРЫСНЫЯ СПАСЫЛКІ</h1>
+
+    <!-- Простая черная закругленная кнопка в самом конце -->
+	
+    <div class="buttons-row">
+    <div class="black-btn-box">
+        <a href="https://gorbibl.gomel.by/index.php?do=static&page=museum&id=100" target="_blank" class="simple-black-btn">
+           СОФ'Я ШАХ
+        </a>
+    </div>
+    <div class="black-btn-box">
+        <a href="https://pismennik.by/%D1%81%D0%BE%D1%84%D1%8C%D1%8F-%D1%88%D0%B0%D1%85-%D1%81%D0%B8%D1%8F%D1%8E%D1%89%D0%B0%D1%8F-%D0%BC%D0%B8%D0%BB%D0%BE%D1%81%D1%82%D1%8C/" target="_blank" class="simple-black-btn">
+           ПІСЬМЕННІК
+        </a>
+    </div>
+    <div class="black-btn-box">
+        <a href="https://svetlib.by/for-two-votes/" target="_blank" class="simple-black-btn">
+           НА ДВА ГАЛАСЫ
+        </a>
+    </div>
+  
+</div>
+
+
+	
+	<div class="home-btn-container">
+        <a href="index.html" class="home-btn">
+            <span class="home-icon">🏠</span> Дадому
+        </a>
+    </div>
+</body>
+</html>
